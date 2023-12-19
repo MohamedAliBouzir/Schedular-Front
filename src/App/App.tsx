@@ -1,5 +1,7 @@
-function App() {
-  return <div>Hello world</div>;
-}
+import Wrapper from '../layout/Wrapper/Wrapper';
+
+const App = () => {
+  return <Wrapper />;
+};
 
 export default App;

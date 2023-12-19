@@ -34,16 +34,12 @@ module.exports = {
     'import/no-extraneous-dependencies': 'warn',
     'prettier/prettier': ['warn'],
     'import/prefer-default-export': 0,
-    'import/no-anonymous-default-export': [
-      'error',
+    'react/jsx-props-no-spreading': 'warn',
+    'react/function-component-definition': [
+      2,
       {
-        allowArray: true,
-        allowArrowFunction: false,
-        allowAnonymousClass: false,
-        allowAnonymousFunction: false,
-        allowCallExpression: true, // The true value here is for backward compatibility
-        allowLiteral: false,
-        allowObject: true,
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
       },
     ],
   },
