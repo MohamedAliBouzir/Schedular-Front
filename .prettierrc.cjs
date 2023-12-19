@@ -5,6 +5,8 @@ const config = {
     singleQuote: true,
 	  jsxSingleQuote: true,
 	  bracketSameLine: true,
+	  endOfLine:"auto",
+	  printWidth: 100
   };
   
   module.exports = config;
