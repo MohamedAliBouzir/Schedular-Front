@@ -5,3 +5,11 @@ export const dashboardPagesMenu = {
     path: '/',
   },
 };
+
+export const authPagesMenu = {
+  login: {
+    id: 'login',
+    text: 'Login',
+    path: 'auth-pages/login',
+  },
+};
