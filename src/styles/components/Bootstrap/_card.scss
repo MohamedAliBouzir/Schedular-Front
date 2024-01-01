@@ -1,0 +1,9 @@
+.card-style {
+    width: 90%; /* Adjust the width as needed */
+    max-width: min(80%,400px); /* Set a maximum width for responsiveness */
+    // margin: 0 auto; /* Center the card horizontally */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow */
+    border-radius: 10px; /* Add rounded corners */
+  }

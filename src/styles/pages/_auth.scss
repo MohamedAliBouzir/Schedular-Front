@@ -1,0 +1,38 @@
+
+.card-auth {
+    height: 100vh; /* Set the container height to full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+.auth {
+    text-align: center; /* Center the text horizontally */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  
+}
+
+.auth-header {
+    
+    &.h1-bold{
+        font-size: 1.5em;
+        font-weight: bold; /* Make the font bold */
+        color: #000000; /* Set the color of the subheading */
+        margin-bottom: 20px; /* Add some space below the subheading */
+    }
+    &.h4{
+        font-size: 1.2em;
+    }
+    &.comicSansMs{
+        font-family: 'Comic Sans MS', cursive, sans-serif; /* Use a handwritten-like font */
+    }
+    &.SegoeUi{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a smooth font */
+        color: #777; /* Set the color for h4 to a grey shade */
+        margin-bottom: 10px; /* Add some space below h4 */
+    }
+  }
+

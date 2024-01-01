@@ -34,6 +34,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'warn',
     'prettier/prettier': ['warn'],
     'import/prefer-default-export': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
     'react/jsx-props-no-spreading': 'warn',
     'react/function-component-definition': [
       2,
