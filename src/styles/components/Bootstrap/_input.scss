@@ -1,26 +1,26 @@
 .input-container {
-    display: flex; /* Use flexbox to center the input horizontally */
-    flex-direction: column; /* Stack label and input vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    position: relative;
-    margin-bottom: 30px;
-    width: 80%; /* Set the width of the container */
-  
-    input {
-      width: 100%; /* Set the input width to 100% of the container */
-      padding: 15px; /* Increased padding for a larger input box */
-      height: 20px; /* Increased height for a larger input box */
-      border-radius: 5px;
-      transition: border-color 0.3s ease; /* Smooth transition for border color */
-      border: 1px solid #ccc; /* Initial border color */
-      &:focus {
-        outline: none;
-        border-color: rgb(0, 106, 255); /* Change border color on focus */
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      }
-      &:hover {
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-      }
+  display: flex; /* Use flexbox to center the input horizontally */
+  flex-direction: column; /* Stack label and input vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  position: relative;
+  margin-bottom: 30px;
+  width: 80%; /* Set the width of the container */
+
+  input {
+    width: 100%; /* Set the input width to 100% of the container */
+    padding: 15px; /* Increased padding for a larger input box */
+    height: 20px; /* Increased height for a larger input box */
+    border-radius: 5px;
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+    border: 1px solid #ccc; /* Initial border color */
+    &:focus {
+      outline: none;
+      border-color: rgb(0, 106, 255); /* Change border color on focus */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    &:hover {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
     }
   }
+}
