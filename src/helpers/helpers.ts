@@ -15,3 +15,8 @@ export const hasNotch = () => {
     (iPhone && aspect.toFixed(3) === '0.462') || (storybook && aspectFrame.toFixed(3) === '0.462')
   );
 };
+
+export const fetcher = async (...args: Parameters<typeof fetch>) => {
+  const response = await fetch(...args);
+  return response.json();
+};

@@ -2,16 +2,24 @@ import { useFormik } from 'formik';
 import Card from '../../components/bootstrap/Card';
 import Input from '../../components/bootstrap/forms/Input';
 import Button from '../../components/bootstrap/Button';
+import { fetcher } from '../../helpers/helpers';
+import useProvideAuth from '../../hooks/SWR/useAuthProvide';
 
 const Login = () => {
+  const auth = useProvideAuth();
   const formik = useFormik({
     initialValues: {
-      Username: undefined,
-      Password: undefined,
+      email: undefined,
+      password: undefined,
     },
-    onSubmit: (values) => {
-      // eslint-disable-next-line no-console
-      console.log(JSON.stringify(values, null));
+    onSubmit: async (values) => {
+      const data = await fetcher(`${import.meta.env.VITE_BACK_URL}/auth/sign-in`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      auth.login(JSON.stringify(data.access_token));
     },
   });
   return (
@@ -21,15 +29,15 @@ const Login = () => {
         <div className='auth-header h4 SegoeUi'>Sign in to continue</div>
         <Input
           type='text'
-          name='Username'
+          name='email'
           onChange={formik.handleChange}
-          value={formik.values.Username}
+          value={formik.values.email}
         />
         <Input
           type='password'
-          name='Password'
+          name='password'
           onChange={formik.handleChange}
-          value={formik.values.Password}
+          value={formik.values.password}
         />
         <Button onClick={formik.handleSubmit}>Login</Button>
       </Card>
