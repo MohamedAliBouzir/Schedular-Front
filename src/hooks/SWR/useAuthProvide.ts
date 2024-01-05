@@ -1,17 +1,18 @@
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 const useProvideAuth = () => {
   const [token, setToken] = useState<string | null | undefined>(null);
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const login = (signToken: string) => {
-    localStorage.setItem('isLogin', signToken);
+    Cookies.set('token', signToken, { expires: 7 });
     setToken(signToken);
     setIsLogin(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('isLogin');
+    Cookies.remove('token');
     setToken(null);
     setIsLogin(false);
   };
