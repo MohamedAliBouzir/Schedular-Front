@@ -1,5 +1,4 @@
-export type UserData = {
-  authToken: string;
+export type IUserDataProps = {
   userId: string;
   email: string;
   firstName: string;

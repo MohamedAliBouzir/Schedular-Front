@@ -1,25 +1,26 @@
 import { useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 import Card from '../../components/bootstrap/Card';
 import Input from '../../components/bootstrap/forms/Input';
 import Button from '../../components/bootstrap/Button';
-import { fetcher } from '../../helpers/helpers';
-import useProvideAuth from '../../hooks/SWR/useAuthProvide';
+import useAuth from '../../hooks/SWR/useAuth';
+// import useProvideAuth from '../../hooks/SWR/useAuthProvide';
 
 const Login = () => {
-  const auth = useProvideAuth();
+  // const auth = useProvideAuth();
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const navigateHome = useCallback(() => navigate('/'), [navigate]);
   const formik = useFormik({
     initialValues: {
       email: undefined,
       password: undefined,
     },
     onSubmit: async (values) => {
-      const data = await fetcher(`${import.meta.env.VITE_BACK_URL}/auth/sign-in`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-type': 'application/json' },
-        body: JSON.stringify(values),
-      });
-      auth.login(JSON.stringify(data.access_token));
+      login(values);
+      navigateHome();
     },
   });
   return (
