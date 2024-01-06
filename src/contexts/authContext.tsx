@@ -1,8 +1,9 @@
 import { FC, ReactNode, createContext, useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IAuthContextProps } from '../interfaces/AuthContext-interface';
+import { authPagesMenu, protectedRoutesMenu } from '../menu';
 
 const authContext = createContext<IAuthContextProps>({
   authToken: null,
@@ -14,9 +15,13 @@ interface IAuthContextProviderProps {
 export const AuthContextProvider: FC<IAuthContextProviderProps> = ({ children }) => {
   const [authToken, setAuthToken] = useState<string | null>(Cookies.get('authToken') || null);
   const navigate = useNavigate();
-  const handleMissingToken = useCallback(() => navigate('/auth-pages/login'), [navigate]);
+  const handleMissingToken = useCallback(() => navigate(`${authPagesMenu.login.path}`), [navigate]);
+  const location = useLocation();
   useEffect(() => {
-    if (!authToken) {
+    const isPathProtected = Object.values(protectedRoutesMenu)
+      .map((route) => route.path)
+      .includes(location.pathname);
+    if (!authToken && isPathProtected) {
       handleMissingToken();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

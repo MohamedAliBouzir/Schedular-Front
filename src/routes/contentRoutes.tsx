@@ -1,10 +1,13 @@
 import { lazy } from 'react';
 import { RouteProps } from 'react-router-dom';
-import { dashboardPagesMenu, authPagesMenu } from '../menu';
+import { dashboardPagesMenu, authPagesMenu, protectedRoutesMenu } from '../menu';
 import Login from '../pages/auth/Login';
 
 const HOME = {
   HOME: lazy(() => import('../pages/home')),
+};
+const PROTECTED = {
+  WELCOME: lazy(() => import('../pages/welcome')),
 };
 
 const presentation: RouteProps[] = [
@@ -15,6 +18,10 @@ const presentation: RouteProps[] = [
   {
     path: dashboardPagesMenu.homePage.path,
     element: <HOME.HOME />,
+  },
+  {
+    path: protectedRoutesMenu.welcomingPage.path,
+    element: <PROTECTED.WELCOME />,
   },
 ];
 

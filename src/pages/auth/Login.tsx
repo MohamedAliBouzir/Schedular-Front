@@ -5,14 +5,15 @@ import Card from '../../components/bootstrap/Card';
 import Input from '../../components/bootstrap/forms/Input';
 import Button from '../../components/bootstrap/Button';
 import useAuth from '../../hooks/SWR/useAuth';
-// import useProvideAuth from '../../hooks/SWR/useAuthProvide';
+import { dashboardPagesMenu } from '../../menu';
 
 const Login = () => {
-  // const auth = useProvideAuth();
-
   const { login } = useAuth();
   const navigate = useNavigate();
-  const navigateHome = useCallback(() => navigate('/'), [navigate]);
+  const navigateHome = useCallback(
+    () => navigate(`${dashboardPagesMenu.homePage.path}`),
+    [navigate]
+  );
   const formik = useFormik({
     initialValues: {
       email: undefined,
