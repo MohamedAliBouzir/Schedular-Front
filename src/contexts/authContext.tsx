@@ -4,8 +4,11 @@ import Cookies from 'js-cookie';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IAuthContextProps } from '../interfaces/AuthContext-interface';
 import { authPagesMenu, protectedRoutesMenu } from '../menu';
+import { TUserDataProps } from '../type/UserData-type';
 
 const authContext = createContext<IAuthContextProps>({
+  user: null,
+  setUser: () => {},
   authToken: null,
   setAuthToken: () => {},
 });
@@ -14,9 +17,11 @@ interface IAuthContextProviderProps {
 }
 export const AuthContextProvider: FC<IAuthContextProviderProps> = ({ children }) => {
   const [authToken, setAuthToken] = useState<string | null>(Cookies.get('authToken') || null);
+  const [user, setUser] = useState<TUserDataProps | null>(null);
   const navigate = useNavigate();
   const handleMissingToken = useCallback(() => navigate(`${authPagesMenu.login.path}`), [navigate]);
   const location = useLocation();
+
   useEffect(() => {
     const isPathProtected = Object.values(protectedRoutesMenu)
       .map((route) => route.path)
@@ -29,10 +34,12 @@ export const AuthContextProvider: FC<IAuthContextProviderProps> = ({ children })
 
   const value = useMemo(
     () => ({
+      setUser,
+      user,
       setAuthToken,
       authToken,
     }),
-    [authToken]
+    [authToken, user]
   );
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };

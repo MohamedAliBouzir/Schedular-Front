@@ -1,5 +1,5 @@
-export type IUserDataProps = {
-  userId: string;
+export type TUserDataProps = {
+  userId: number;
   email: string;
   firstName: string;
   lastName: string;

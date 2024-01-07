@@ -2,12 +2,12 @@ import { useContext } from 'react';
 import Cookies from 'js-cookie';
 import authContext from '../../contexts/authContext';
 import { fetcher } from '../../helpers/helpers';
-import { LoginInput } from '../../type/loginInput-type';
+import { TLoginInput } from '../../type/loginInput-type';
 
 const useAuth = () => {
   const { authToken, setAuthToken } = useContext(authContext);
 
-  const login = async (values: LoginInput) => {
+  const login = async (values: TLoginInput) => {
     const data = await fetcher(`${import.meta.env.VITE_BACK_URL}/auth/sign-in`, {
       method: 'POST',
       credentials: 'include',
