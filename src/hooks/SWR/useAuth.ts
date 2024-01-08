@@ -14,10 +14,11 @@ const useAuth = () => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(values),
     });
-    const token = JSON.stringify(data.access_token);
+    // eslint-disable-next-line prefer-template
+    const token = 'Bearer '.concat(data.access_token);
     if (data) {
       setAuthToken(token);
-      Cookies.set('authToken', token, { expires: 1 });
+      Cookies.set('authToken', `${token}`, { expires: 1 });
     }
   };
 
