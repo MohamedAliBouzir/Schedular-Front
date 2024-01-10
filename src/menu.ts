@@ -18,6 +18,6 @@ export const protectedRoutesMenu = {
   welcomingPage: {
     id: 'welcome',
     text: 'Welcoming page',
-    path: '/',
+    path: '/welcome',
   },
 };

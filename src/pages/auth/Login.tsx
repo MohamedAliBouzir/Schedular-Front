@@ -4,14 +4,14 @@ import { useCallback } from 'react';
 import Card from '../../components/bootstrap/Card';
 import Input from '../../components/bootstrap/forms/Input';
 import Button from '../../components/bootstrap/Button';
-import useAuth from '../../hooks/SWR/useAuth';
-import { dashboardPagesMenu } from '../../menu';
+import useAuth from '../../hooks/useAuth';
+import { protectedRoutesMenu } from '../../menu';
 
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const navigateHome = useCallback(
-    () => navigate(`${dashboardPagesMenu.homePage.path}`),
+    () => navigate(`${protectedRoutesMenu.welcomingPage.path}`),
     [navigate]
   );
   const formik = useFormik({
