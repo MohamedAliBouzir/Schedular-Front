@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { IAuthContextProps } from '../interfaces/AuthContext-interface';
 import { authPagesMenu, protectedRoutesMenu } from '../menu';
 import { TUserDataProps } from '../type/UserData-type';
-import { fetcher } from '../helpers/helpers';
+import { getUserData } from '../services/userData-service';
 
 const authContext = createContext<IAuthContextProps>({
   user: null,
@@ -29,15 +29,10 @@ export const AuthContextProvider: FC<IAuthContextProviderProps> = ({ children })
       .includes(location.pathname);
     if (authToken && !user) {
       const fetchData = async () => {
-        const userData = await fetcher(`${import.meta.env.VITE_BACK_URL}/users/me`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: authToken,
-          },
-        });
-        setUser(userData);
+        const userData = await getUserData(authToken);
+        if (userData) {
+          setUser(userData);
+        }
       };
       fetchData();
     }

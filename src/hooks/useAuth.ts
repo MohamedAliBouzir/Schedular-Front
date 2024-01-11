@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import authContext from '../contexts/authContext';
 import { fetcher } from '../helpers/helpers';
 import { TLoginInput } from '../type/loginInput-type';
+import { getUserData } from '../services/userData-service';
 
 const useAuth = () => {
   const { authToken, setAuthToken, user, setUser } = useContext(authContext);
@@ -15,19 +16,12 @@ const useAuth = () => {
       body: JSON.stringify(values),
     });
     // eslint-disable-next-line prefer-template
-    const token = 'Bearer '.concat(data.access_token);
     if (data) {
+      const token = 'Bearer '.concat(data.access_token);
       setAuthToken(token);
       Cookies.set('authToken', `${token}`, { expires: 1 });
-      const userData = await fetcher(`${import.meta.env.VITE_BACK_URL}/users/me`, {
-        method: 'GET',
-        credentials: 'include',
-        headers: {
-          'Content-type': 'application/json',
-          Authorization: token,
-        },
-      });
-      setUser(userData);
+      const userData = await getUserData(authToken!);
+      if (userData) setUser(userData);
     }
   };
 
