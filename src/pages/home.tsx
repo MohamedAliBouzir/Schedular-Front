@@ -1,5 +1,10 @@
+import GitHubContributionsHeatmap from '../components/ContributionsTable';
+
 const home = () => {
-  return <div>home</div>;
+
+  return (
+    <GitHubContributionsHeatmap />
+  );
 };
 
 export default home;
