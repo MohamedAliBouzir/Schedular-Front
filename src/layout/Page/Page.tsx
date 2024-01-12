@@ -1,11 +1,8 @@
-import { forwardRef, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { IPageProps } from '../../interfaces/Page-interface';
 
-export interface IPageProps {
-  children: ReactNode;
-  className?: string;
-}
 const Page = forwardRef<HTMLDivElement, IPageProps>(({ children, className, ...props }, ref) => {
   return (
     <div
